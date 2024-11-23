@@ -1,0 +1,193 @@
+body {
+    width: 1280px;
+    height: 1024px;
+    margin: 0;
+    /*border: 1px solid black;*/
+    box-sizing: border-box;
+
+
+}
+/* 링크 밑줄 제거*/
+
+a {
+    text-decoration-line: none;
+    /*   text-decoration-line: underline; */
+    /*   text-decoration-line: overline; */
+    /*   text-decoration-line: line-through; */
+    /*   text-decoration-line: underline line-through overline; */
+}
+
+/* 아직 방문하지 않은 링크의 글자색을 정의합니다. */
+a:link { color: black}
+
+/*호버 */
+a:hover { color:red; }
+
+/*방문시*/
+a:visited { color:saddlebrown }
+
+
+
+#board_box {
+    border: 1px solid black;
+    width: 100%;
+    height: 60%;
+    float: left;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+}
+aside {
+
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    display: block;
+    height: 10%;
+    text-align: center;
+    border: 1px solid gray;
+
+
+
+}
+#board_select_title {
+
+    float: left;
+    width: 100%;
+    height: 10%;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.board_select_title_1 {
+
+    display: inline-block;
+    text-align: center;
+    display: block;
+    margin-top: 1%;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: aqua;
+
+
+
+
+}
+
+#board_menu ul {
+    padding-top: 13px;
+
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+#board_menu ul li {
+    display: inline;
+
+    margin-right: 20px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+
+#search_div {
+    background-color: darkorchid;
+    /* float: left; */
+    height: 8%;
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+    /*display: flex; /* diplay flex */
+    /* justify-content: space-between; /* 양쪽으로 중간 스페이스 */
+    text-align: right;
+
+}
+#search_div div {
+    background-color: darkgoldenrod;
+    float: left;
+    width: 100%;
+
+    height: 100%;
+
+}
+
+section {
+    background-color: cornflowerblue;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    height: 60%;
+}
+
+
+
+table {
+    float: left;
+    box-sizing: border-box;
+    background-color: beige;
+    width: 100%;
+    height: 100%
+
+
+
+
+}
+td, th {
+    /* loat: left;
+     margin-right:270px;
+     background-color: chocolate;
+     */
+    border-bottom: 1px solid gainsboro;
+
+
+}
+th {
+    background-color: dimgray;
+    text-align: center;
+    font-size: 20px;
+
+}
+td {
+    text-align: center;
+
+}
+
+
+#table_write_div {
+    float: left;
+    text-align: right;
+    background-color: violet;
+    width: 100%;
+    height: 10%;
+    box-sizing: border-box;
+
+}
+
+.write_button {
+
+    background-color: rgb(13, 110, 253);
+    border-radius: 10px;
+    height: 50px;
+    width: 80px;
+    color: wheat;
+
+}
+
+#intputState {
+    height: 40px;
+    width: 10%;
+}
+.searchBox {
+    height: 40px;
+    width: 20%;
+}
+
+.search-btn {
+    height: 40px;
+    background-color: rgb(13, 110, 253);
+    color: white;
+    width: 8%;
+}
