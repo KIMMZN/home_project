@@ -1,0 +1,85 @@
+
+
+commit;
+
+show databases;
+use final_project;
+
+use final_project;
+
+create table aaa (
+id varchar(20) primary key,
+pass varchar(20),
+tel varchar(20)
+);
+
+desc aaa;
+
+show databases;
+use final_project;
+
+create table board(
+category varchar(10),
+board_num int primary key,
+board_title varchar(20),
+board_content varchar(20),
+create_at timestamp default current_timestamp,
+emp_id varchar(12)
+);
+desc board;
+
+-- 데이터베이스 연결
+USE cis_finalproject;
+
+-- 시퀀스 정보가 담긴 데이터를 생성, 테이블 저장
+CREATE TABLE sequences (
+name varchar(30),
+currval BIGINT UNSIGNED
+) ENGINE = InnoDB;
+
+-- DELEMETER : 구분자
+-- MODIFIES SQL DATA : 프로시저가 데이터를 수정할 수 있도록 지정
+-- DETERMINISTIC : 프로시저가 동일한 입력에 대해 동일한 결과를 항상 생성하도록 설정
+
+-- 시퀀스 정보를 저장할 프로시저 생성
+-- 1) DELETE : 프로시저 생성 시 동일한 이름의 시퀀스가 있다면 삭제
+-- 2) INSERT : 시퀀스 테이블에 시퀀스 이름과 번호 생성
+DELEMETER $$
+CREATE PROCEDURE `create_seq` (IN seq_name text)
+MODIFIES SQL DATA
+DETERMINISTIC
+BEGIN
+	DELETE FROM sequences WHERE name=seq_name;
+	INSERT INTO sequences VALUES (seq_name, 0);
+END
+
+-- 시퀀스 번호 저장을 위한 함수 선언
+-- DECLARE : 번호를 저장할 변수 선언
+-- UPDATE : 시퀀스 이름과 일치하는 데이터를 찾아 시퀀스 번호 증가
+-- SELECT : 업데이트 후 변경된 시퀀스 값을 변수에 저장
+-- RETURN : 변수 반환
+DELEMETER $$
+CREATE FUNCTION `nextval2` (seq_name VARCHAR(32))
+RETURNS BIGINT UNSIGNED
+MODIFIES SQL DATA
+DETERMINISTIC
+BEGIN
+	DECLARE ret BIGINT UNSIGNED;
+	UPDATE sequences SET currval=currval+1 WHERE name=seq_name;
+	SELECT currval INTO ret FROM sequences WHERE name=seq_name LIMIT 1;
+	RETURN ret;
+END
+
+-- 시퀀스 생성
+CALL create_seq('board_seq');
+
+use final_project;
+-- 테스트
+CREATE TABLE test (
+	num INT,
+	name VARCHAR(5)
+);
+
+INSERT INTO test VALUES ((SELECT nextval2('board_seq') FROM DUAL), '테스트1');
+
+select * from board;
