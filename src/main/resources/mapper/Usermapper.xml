@@ -5,29 +5,64 @@
 
 <mapper namespace="company.company_project.Repository.IF_Reopository">
 
+   <!-- 본래
+    <insert id="insertOne" parameterType="company.company_project.vo.boardVO">
+        insert into board values (#{category}, (SELECT nextval2('board_seq') FROM DUAL), #{board_title},
+                                  #{board_content},default,#{emp_id});
+    </insert>  -->
 
     <insert id="insertOne" parameterType="company.company_project.vo.boardVO">
-            insert into board values (#{category}, (SELECT nextval2('board_seq') FROM DUAL), #{board_title},
-                                        #{board_content},default,#{emp_id});
+        insert into board_table values (#{category}, (SELECT nextval2('board_seq') FROM DUAL), #{board_title},
+                                  #{board_content},default,#{emp_id},default,default);
     </insert>
+
+
+    <!-- 본래
+         <select id="listAll" resultType="company.company_project.vo.boardVO">
+                  SELECT * from board where category = '공지사항' order by board_num DESC;
+          </select> -->
     <!--
-    <select id="findAll" resultType="com.example.yourpackage.domain.User">
-        SELECT * FROM users
+    <select id="listAll" resultType="company.company_project.vo.boardVO">
+        SELECT * from board_table where category = '공지사항' order by board_num DESC;
     </select>
-
-
-    <select id="findById" parameterType="long" resultType="com.example.yourpackage.domain.User">
-        SELECT * FROM users WHERE id = #{id}
-    </select>
-    <insert id="insert" parameterType="com.example.yourpackage.domain.User">
-        INSERT INTO users (name, email) VALUES (#{name}, #{email})
-    </insert>
-    <update id="update" parameterType="com.example.yourpackage.domain.User">
-        UPDATE users SET name = #{name}, email = #{email} WHERE id = #{id}
-    </update>
-    <delete id="delete" parameterType="long">
-        DELETE FROM users WHERE id = #{id}
-    </delete>
-
     -->
+
+    <select id="listAll" resultType="company.company_project.vo.boardVO">
+        SELECT  board_num,board_title,emp_id, boardHits,
+                DATE_FORMAT(create_at, "%y-%m-%d") AS create_at
+        from board_table
+        where category = '공지사항'
+        order by board_num DESC;
+    </select>
+
+    <!-- 게시글 업데이트 -->
+    <update id="updateHits" parameterType="int">
+        update board_table set boardHits=boardHits+1 where board_num = #{num}
+    </update>
+    <!-- 게시글하나보기 -->
+
+    <select id="selectOne" parameterType="int" resultType="company.company_project.vo.boardVO">
+        select * from board_table
+        where board_num = #{num}
+    </select>
+      <!--
+      <select id="findAll" resultType="com.example.yourpackage.domain.User">
+          SELECT * FROM users
+      </select>
+
+
+      <select id="findById" parameterType="long" resultType="com.example.yourpackage.domain.User">
+          SELECT * FROM users WHERE id = #{id}
+      </select>
+      <insert id="insert" parameterType="com.example.yourpackage.domain.User">
+          INSERT INTO users (name, email) VALUES (#{name}, #{email})
+      </insert>
+      <update id="update" parameterType="com.example.yourpackage.domain.User">
+          UPDATE users SET name = #{name}, email = #{email} WHERE id = #{id}
+      </update>
+      <delete id="delete" parameterType="long">
+          DELETE FROM users WHERE id = #{id}
+      </delete>
+
+      -->
 </mapper>

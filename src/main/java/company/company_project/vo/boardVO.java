@@ -11,7 +11,8 @@ public class boardVO {
    private String board_content;
    private String create_at;
    private String emp_id;
-
+   private int boardHits;
+   private int fileAttached;
 
 
 }

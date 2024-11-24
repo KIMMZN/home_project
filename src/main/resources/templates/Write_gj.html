@@ -33,7 +33,7 @@
         margin: 10%;
         background-color: antiquewhite;
         width: 90%;
-        height: 65%;
+        height: 70%;
         box-sizing: border-box;
 
 
@@ -70,8 +70,18 @@
         float: left;
         background-color: gold;
         margin-right: 200px;
+        width: 100%;
+        text-align: left;
     }
-
+    #namebox { /* 작성자 input box*/
+        width:200px;
+        border: 0;
+        border-radius: 10px;
+        height: 40px;
+    }
+    #namebox:hover {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+    }
 
 
     .write_title {
@@ -95,15 +105,12 @@
         flex-direction: column;
 
     }
-    #namebox { /* 작성자 input box*/
-        width:300px;
-        border: 0;
-        border-radius: 5px;
-    }
+
     #contextbox{
-        height: 285px;
+        height: 310px;
         border: 0;
         border-radius: 5px;
+
 
     }
 
@@ -170,6 +177,10 @@
         background-color: red;
     }
 
+
+
+
+
 </style>
 <body>
 <form action="/board_write_one" method="get">
@@ -179,10 +190,6 @@
         <div class="write_writer">
 
 
-            <div class="write_check">
-                <label class="write_check_label" for="gridcheck">비밀글</label>
-                <input class="write_check_input" type="checkbox" id="gridcheck" value="1">
-            </div>
             <div class="write_writer_name">
                 <label for="namebox">작성자</label>
                 <input type="text" id="namebox" placeholder="작성자이름" name="emp_id">
@@ -204,6 +211,7 @@
             </div>
 
         </div>
+
         <div class="write_files">
             <div class="write_files_btn_div"><input type="button" value="파일추가" id="filebtn"> </div>
             <!--

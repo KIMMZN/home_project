@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/preview1.css??ver=1">
+    <script src="https://kit.fontawesome.com/ae15ba340d.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div id="write">
+    <div class="write_main"><span>공지사항</span></div>
+    <div class="write_writer">
+        <div class="write_writer_name">
+            <label for="namebox">작성자</label>
+            <input type="text" id="namebox" placeholder="작성자" readonly
+            th:value="${boardvo.emp_id}">
+
+        </div>
+
+    </div>
+    <div class="write_title">
+        <div class="write_title_name">
+            <label for="titlebox" class="title_font">제목</label>
+            <input type="text" id="titlebox" placeholder="제목을 입력하시오" readonly
+                   th:value="${boardvo.board_title}">
+        </div>
+
+    </div>
+    <div class="write_text">
+        <div class="write_text_name">
+            <label for="contextbox" class="context_font">글내용</label>
+            <textarea id="contextbox" placeholder="내용을 입력하시오 " readonly
+                      th:text="${boardvo.board_content}">
+                </textarea>
+        </div>
+
+    </div>
+    <div class="update_delete_container">
+        <div class="update_delete_div">
+            <input type="button" value="목록" onclick="btnlist()">
+            <input type="submit" value="수정">
+            <input type="submit" value="삭제">
+        </div>
+    </div>
+
+    <div class="comment_div">
+        <div class="Comment_title">
+            <table>
+                <thead>
+                <tr><th>Comment</th></tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td >댓글내용:원진호!!</td>
+                    <td >작성자:시온</td>
+                </tr>
+                <tr>
+                    <td >댓글내용:원진호!!</td>
+                    <td >작성자:시온</td>
+                </tr>
+                <tr>
+                    <td >댓글내용:원진호!!</td>
+                    <td >작성자:시온</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <form action="#" method="get" onsubmit="return confirm('정말 댓글을 등록하시겠습까?')">
+            <div class="Comment_btn_div">
+                <div class="Comment_writer_div">
+                    <label for="Comment_writer">작성자</label>
+                    <input type="text" id="Comment_writer" name="cmtWriter">
+                </div>
+                <div class="Comment_area_div">
+                    <label for="Comment_area"></label>
+                    <textarea name="textarea" id="Comment_area" placeholder="댓글남기기"></textarea>
+                    <input type="submit" value="댓글등록" class="Comment_btn">
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+
+    </div>
+
+
+</body>
+<script>
+
+    function btnlist() {
+        location.href = "/board";
+
+    }
+
+    /*
+    let cmtbtn = document.querySelector(".Comment_btn").addEventListener("click",()=> {
+          let writer = document.querySelector('#Comment_writer');
+          let cmtcontent = document.querySelector('#Comment_area');
+
+
+          alert(writer.value);
+          alert(cmtcontent.value);
+
+       alert("댓글등록하지마");
+    });
+     */
+
+
+
+
+
+
+
+
+
+</script>
+</html>
