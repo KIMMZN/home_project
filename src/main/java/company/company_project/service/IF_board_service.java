@@ -12,5 +12,7 @@ public interface IF_board_service {
     public void readBoard(int num)throws Exception;
     //게시글보기
     public boardVO viewOne(int num)throws Exception;
+    //선택 게시글 삭제
+    public void delOne(int number)throws Exception;
 
 }

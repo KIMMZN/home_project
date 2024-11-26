@@ -16,5 +16,7 @@ public interface IF_Reopository {
     public void updateHits(int num)throws Exception;
     //게시글 보기
     public boardVO selectOne(int num)throws Exception;
+    //삭제
+    public void deleteOne(int number)throws Exception;
 
 }

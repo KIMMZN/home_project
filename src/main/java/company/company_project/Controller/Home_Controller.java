@@ -3,11 +3,10 @@ package company.company_project.Controller;
 import company.company_project.service.IF_board_service;
 import company.company_project.vo.boardVO;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -64,6 +63,37 @@ public class Home_Controller {
         model.addAttribute("boardvo", boardvo);
         System.out.println(boardvo.toString() + "boardvo");
         return "announce_pre";
+    }
+
+    // 삭제
+    @GetMapping(value="/gj_preview/del/{num}")
+    public String gj_del(@PathVariable("num") String num) throws Exception {
+
+        //NumberFormatException - 문자를 숫자로 변경시도하다가 에러가 발생하는 경우
+
+        try {
+            System.out.println(num + "    게시판넘테스트");
+            int number = Integer.parseInt(num);
+            ifboardservice.delOne(number);
+
+        } catch (NumberFormatException e) {
+            System.out.println("NumberFormatException 에러");
+            return "redirect:/board";
+        }
+
+
+        System.out.println("삭제 완료");
+        return "redirect:/board";
+
+    }
+
+    @PostMapping(value = "/gj_preview/modifyOne/{num}")
+    public String gj_modifyOne(@PathVariable("num") Integer number, @ModelAttribute boardVO boardvo)throws Exception {
+
+        System.out.println(number + "     a asdf");
+        System.out.println(boardvo.toString());
+
+        return "redirect:/board";
     }
 
     //자유게시판

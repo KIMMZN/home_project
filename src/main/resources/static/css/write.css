@@ -68,9 +68,6 @@ body {
     border-radius: 10px;
     height: 40px;
 }
-#namebox:hover {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
-}
 
 
 .write_title {

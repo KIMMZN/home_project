@@ -45,6 +45,12 @@
         select * from board_table
         where board_num = #{num}
     </select>
+
+    <!-- 게시글 한개 삭제 -->
+    <delete id="deleteOne" parameterType="int">
+        delete from board_table
+        where board_num = #{number}
+    </delete>
       <!--
       <select id="findAll" resultType="com.example.yourpackage.domain.User">
           SELECT * FROM users

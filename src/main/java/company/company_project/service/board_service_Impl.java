@@ -44,5 +44,12 @@ public class board_service_Impl implements IF_board_service {
         return ifrepository.selectOne(num);
     }
 
+    //삭제
+    @Override
+    public void delOne(int number) throws Exception {
+
+        ifrepository.deleteOne(number);
+    }
+
 
 }

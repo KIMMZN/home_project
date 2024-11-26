@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
 <form action="/board_write_one" method="get">
     <div id="write">
         <div class="write_main"><span>공지사항</span></div>
@@ -33,14 +34,16 @@
         <div class="write_text">
             <div class="write_text_name">
                 <label for="contextbox">글내용</label>
-                <textarea id="contextbox" placeholder="내용을 입력하시오 " name="board_content">
+                <textarea id="contextbox" name="board_content">
                 </textarea>
             </div>
 
         </div>
 
         <div class="write_files">
-            <div class="write_files_btn_div"><input type="button" value="파일추가" id="filebtn"> </div>
+            <div class="write_files_btn_div">
+                <input type="button" value="파일추가" id="filebtn">
+            </div>
             <!--
             <input type="file" name="file" id="formFile">
             <input type="file" name="file" id="formFile">
@@ -55,9 +58,9 @@
                 <input class="write_add_btn" type="submit" value="등록">
             </div>
         </div>
-</form>
-</div>
 
+</div>
+</form>
 
 </body>
 <script>
@@ -69,7 +72,7 @@
 
         const fileList = document.querySelector(".write_files")
         let newfile = document.createElement("div");
-        newfile.classList.add('file_add',);
+        newfile.classList.add('file_add');
         newfile.innerHTML = '<input type="file" name="file" id="formFile"><input type="button" value="x" id="file_cancelbtn">';
         fileList.appendChild(newfile);
 
